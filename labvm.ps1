@@ -6,7 +6,7 @@ Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 refreshenv
 
 # install packages
-choco install -y chrome setdefaultbrowser azure-cli vscode dotnet-7.0-sdk git 
+choco install -y googlechrome setdefaultbrowser azure-cli vscode dotnet-7.0-sdk git 
 
 SetDefaultBrowser chrome
 

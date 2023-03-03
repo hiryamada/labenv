@@ -9,3 +9,6 @@ refreshenv
 choco install -y chrome setdefaultbrowser azure-cli vscode dotnet-7.0-sdk git 
 
 SetDefaultBrowser chrome
+
+# disable Server Manager
+schtasks.exe /change /tn "\Microsoft\Windows\Server Manager\ServerManager" /disable

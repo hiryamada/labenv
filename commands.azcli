@@ -1,0 +1,16 @@
+#!/bin/bash
+
+d=$(date "+%Y%m%d-%H%M%S")
+g="rg-winvm-$d"
+l=japaneast
+rdpfile="winvm-$d.rdp"
+username=user-`cat /dev/urandom |tr -dc '[:alnum:]' |fold -w15 |head -n1` # max 20 chars
+password=`cat /dev/urandom |tr -dc '[:alnum:]' |fold -w40 |head -n1`!!!
+# virtualMachineName=win # max 15 chars (windows), 64 chars (linux)
+echo "username:s:$username" > "$rdpfile"
+echo -n 'password 51:b:' >> "$rdpfile"
+pwsh -Command "echo '$password'|ConvertTo-SecureString -AsPlainText -Force|ConvertFrom-SecureString" >> "$rdpfile"
+
+az group create -n $g -l $l
+ip=$(az deployment group create -f main.bicep -g $g -p adminUsername="$username" adminPassword="$password" --query 'properties.outputs.ip.value' -otsv)
+echo "full address:s:$ip" >> "$rdpfile"

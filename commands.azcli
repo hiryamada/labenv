@@ -1,5 +1,3 @@
-#!/bin/bash
-
 d=$(date "+%Y%m%d-%H%M%S")
 g="rg-winvm-$d"
 l=japaneast
@@ -14,3 +12,4 @@ pwsh -Command "echo '$password'|ConvertTo-SecureString -AsPlainText -Force|Conve
 az group create -n $g -l $l
 ip=$(az deployment group create -f main.bicep -g $g -p adminUsername="$username" adminPassword="$password" --query 'properties.outputs.ip.value' -otsv)
 echo "full address:s:$ip" >> "$rdpfile"
+start "$rdpfile"

@@ -1,26 +1,26 @@
 # labvm
 
+Windows VMを起動します。
+
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhiryamada%2Flabvm%2Fmaster%2Fazuredeploy.json)
 
-# デフォルトブラウザの変更
+セットアップされるソフトウェア:
 
-```
-setdefaultbrowser edge
-```
+- .NET SDK
+- Visual Studio Code
+- Google Chrome
+- SetDefaultBrowser
+- Git for Windows
+- Azure CLI
 
-# Azure CLI
+# Azure CLIでのAzureサインイン
 
 ```
 az login
 ```
-この場合上記で設定したデフォルトブラウザが使用される
 
-# Azure PowerShell
-
+# Azure PowerShellでのAzureサインイン
 
 ```
-Connect-AzAccount -DeviceCode
+Connect-AzAccount
 ```
-
-`-DeviceCode` がない場合 Sigin inのウィンドウが表示されるが、JavaScriptのエラーとなる。
-

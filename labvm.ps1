@@ -33,3 +33,8 @@ try {
 catch {
     New-ItemProperty -Path $path -Name 'VisualFXSetting' -Value 1 -PropertyType 'DWORD'
 }
+
+# uninstall Microsoft Edge
+cd 'C:\Program Files (x86)\Microsoft\Edge\Application\'
+$setup = (Get-ChildItem -Recurse |where Name -match 'setup.exe').FullName
+& $setup --uninstall --force-uninstall --system-level

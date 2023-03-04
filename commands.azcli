@@ -12,4 +12,7 @@ pwsh -Command "echo '$password'|ConvertTo-SecureString -AsPlainText -Force|Conve
 az group create -n $g -l $l
 ip=$(az deployment group create -f main.bicep -g $g -p adminUsername="$username" adminPassword="$password" --query 'properties.outputs.ip.value' -otsv)
 echo "full address:s:$ip" >> "$rdpfile"
+echo 'desktopwidth:i:1920' >> "$rdpfile"
+echo 'desktopheight:i:1080' >> "$rdpfile"
+
 start "$rdpfile"

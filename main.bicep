@@ -9,7 +9,7 @@ param virtualMachineName string = 'labvm-${uniqueString(resourceGroup().name)}'
 param virtualMachineComputerName string = 'labvm'
 
 param osDiskType string = 'Premium_LRS'
-param virtualMachineSize string = 'Standard_D2s_v4'
+param virtualMachineSize string = 'Standard_D2s_v5'
 param adminUsername string = 'azureuser'
 
 @secure()

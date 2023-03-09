@@ -132,25 +132,4 @@ resource virtualMachine 'Microsoft.Compute/virtualMachines@2022-11-01' = {
   }
 }
 
-resource customScriptExtension 'Microsoft.Compute/virtualMachines/extensions@2022-11-01' = {
-  name: 'custom${uniqueString(resourceGroup().name)}'
-  location: location
-  parent: virtualMachine
-  properties: {
-    publisher: 'Microsoft.Compute'
-    type: 'CustomScriptExtension'
-    typeHandlerVersion: '1.10'
-    autoUpgradeMinorVersion: true
-    protectedSettings: {
-      fileUris: [
-        'https://raw.githubusercontent.com/hiryamada/labvm/main/labvm.ps1'
-      ]
-      commandToExecute: 'powershell.exe -ExecutionPolicy Unrestricted -File labvm.ps1'
-    }
-    settings: {
-      timestamp: 123
-    }
-  }
-}
-
 output ip string = publicIpAddress.properties.ipAddress

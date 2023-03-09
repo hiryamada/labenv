@@ -16,3 +16,5 @@ echo 'desktopwidth:i:1920' >> "$rdpfile"
 echo 'desktopheight:i:1080' >> "$rdpfile"
 
 start "$rdpfile"
+
+az deployment group create -f ext.bicep -g $g
